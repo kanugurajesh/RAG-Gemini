@@ -1,7 +1,8 @@
-// queryEmbeddings.js
+// queryEmbeddings.ts
 import { Pinecone } from "@pinecone-database/pinecone";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
+import { pineconeIndexName, pineconeNamespaceName } from "./components";
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY as string,
 });
 
-const indexName = "index1";
+// const indexName = "index1";
 
 const queryEmbeddings = async (queryText: string) => {
   // Generate embedding for the query
@@ -19,15 +20,14 @@ const queryEmbeddings = async (queryText: string) => {
   const result = await model.embedContent(queryText);
   const queryVector = result.embedding.values;
 
-  const index = pc.index(indexName);
+  const index = pc.index(pineconeIndexName);
 
-  const queryResponse = await index.namespace("example-namespace2").query({
+  const queryResponse = await index.namespace(pineconeNamespaceName).query({
     topK: 3,
     vector: queryVector,
     includeMetadata: true,
   });
 
-  //   console.log("Query Results:", queryResponse.matches[0].metadata.text);
   if (queryResponse.matches.length === 0) {
     return "No results found";
   }
