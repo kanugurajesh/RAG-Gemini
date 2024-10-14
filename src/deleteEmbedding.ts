@@ -1,3 +1,5 @@
+// This file is used to delete embeddings from the Pinecone index. The function deleteEmbeddings is defined and called to delete the embeddings from the Pinecone index.
+
 // deleteEmbeddings.ts
 import { Pinecone } from "@pinecone-database/pinecone";
 import dotenv from "dotenv";

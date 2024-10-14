@@ -1,3 +1,5 @@
+// The below code snippet is used to generate embeddings for the text data using the Google Generative AI API. The text data is split into chunks of 200 words each, and embeddings are generated for each chunk using the `embedContent` method of the `GoogleGenerativeAI` class. The embeddings are stored in an array along with the chunk index and text data for reference. The generated embeddings are then logged to the console and returned as an array.
+
 // generateEmbeddings.js
 import { chunkText } from "./utils/chunkText"; // Adjust the path as necessary
 import data from "./data/data"; // Adjust the path as necessary

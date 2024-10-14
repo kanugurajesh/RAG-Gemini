@@ -1,3 +1,5 @@
+// The below code snippet is used to query embeddings for a given text input using the Google Generative AI API and the Pinecone database. The queryEmbeddings function is defined to generate embeddings for the input text and query the Pinecone index for similar embeddings. The top 3 matches are returned as the query response. The getData function is defined to extract the text data from the query response. The generateAnswer function is defined to generate an answer based on the query text and context using the Google Generative AI API. The query text is used as the prompt for the answer generation process.
+
 // queryEmbeddings.ts
 import { Pinecone } from "@pinecone-database/pinecone";
 import { GoogleGenerativeAI } from "@google/generative-ai";

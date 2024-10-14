@@ -1,3 +1,5 @@
+// The below code snippet is used to store embeddings in the Pinecone database. The storeEmbeddings function is defined to generate embeddings using the generateEmbeddings function and store them in the Pinecone index. The embeddings are upserted to the Pinecone index using the upsert method. The index is initialized with the specified dimension, metric, and serverless configuration. The storeEmbeddings function is then called to store the embeddings in the Pinecone database.
+
 // storeEmbeddings.ts
 import { Pinecone } from "@pinecone-database/pinecone";
 import dotenv from "dotenv";
