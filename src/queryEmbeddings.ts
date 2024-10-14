@@ -45,3 +45,28 @@ const queryEmbeddings = async (queryText: string) => {
 
 // Example usage
 queryEmbeddings("Describe your experience at IIT Bombay.");
+
+// get Answer
+
+const getData = async (queryText: string) => {
+  const queryResponse = await queryEmbeddings(queryText);
+  if (queryResponse === "No results found") {
+    return queryResponse;
+  }
+  return queryResponse.matches[0]?.metadata?.text ?? "Metadata is undefined";
+};
+
+// Example usage
+
+const generateAnswer = async () => {
+  const queryText = "Describe your experience at IIT Bombay.";
+  const answer = await getData(queryText);
+  const prompt = `Can you answer the question ${queryText} based on the following context : ${answer}`;
+
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  const result = await model.generateContent(prompt);
+  console.log("Answer:\n", result.response.text());
+};
+
+generateAnswer();
